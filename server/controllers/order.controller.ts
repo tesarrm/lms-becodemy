@@ -35,7 +35,6 @@ export const createOrder = CatchAsyncError(async (req: Request, res: Response, n
             payment_info,
         }
 
-
         const mailData = {
             order: {
                 _id: course._id.toString().slice(0, 6),
