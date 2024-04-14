@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Your Elearning order is confirmed</h1>
+    <p>And we're just as excited as you are.</p>
+    <br>
+    <br>
+    <h4>Here's what you ordered:</h4>
+    <table>
+        <tr>
+            <td>
+                Order #: <%= order._id %>
+            </td>
+            <td>
+                Order Date: <%= order.date %>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>Item</td>
+            <td>Qty</td>
+            <td>Cost</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>
+                <%= order.name %>
+            </td>
+            <td>1</td>
+            <td>
+                <%= order.price %>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>Subtotal:</td>
+            <td>$<%= order.price %>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>Total:</td>
+            <td>$<%= order.price %>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
