@@ -23,7 +23,6 @@ interface Layout extends Document {
         subTitle: string;
     }
 }
-
 const faqSchema = new Schema<FaqItem>({
     question: { type: String },
     answer: { type: String },
@@ -31,7 +30,6 @@ const faqSchema = new Schema<FaqItem>({
 const categorySchema = new Schema<Category>({
     title: { type: String },
 })
-
 const bannerImageSchema = new Schema<BannerImage>({
     public_id: { type: String },
     url: { type: String },
