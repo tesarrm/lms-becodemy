@@ -1,5 +1,5 @@
 import express from "express"
-import { addAnswer, addQuestion, addReplyToReview, addReview, editCourse, getAllCourse, getCourseByUser, getSingleCourse, uploadCourse } from "../controllers/course.controller";
+import { addAnswer, addQuestion, addReplyToReview, addReview, editCourse, getAllCourse, getAllCourses, getCourseByUser, getSingleCourse, uploadCourse } from "../controllers/course.controller";
 import { authorizeRoles, isAuthenticated } from "../middleware/auth";
 import { CatchAsyncError } from "../middleware/catchAsyncErrors";
 const courseRouter = express.Router()
@@ -50,5 +50,12 @@ courseRouter.put(
     authorizeRoles("admin"),
     addReplyToReview
 )
+courseRouter.get(
+    "/get-courses",
+    isAuthenticated,
+    authorizeRoles("admin"),
+    getAllCourses
+)
+
 
 export default courseRouter
