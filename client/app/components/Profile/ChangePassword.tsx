@@ -1,5 +1,5 @@
 import { styles } from "@/app/styles/styles"
-import { useUpdateAvatarMutation } from "@/redux/features/user/userApi"
+import { useUpdateAvatarMutation, useUpdatePasswordMutation } from "@/redux/features/user/userApi"
 import React, { useEffect, useState } from "react"
 import toast from "react-hot-toast"
 
@@ -9,7 +9,9 @@ const ChangePassword = (props: Props) => {
     const [oldPassword, setOldPassword] = useState("")
     const [newPassword, setNewPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
-    const [updatePassword, { isSuccess, error }] = useUpdateAvatarMutation()
+    const [updatePassword, { isSuccess, error }] = useUpdatePasswordMutation()
+
+    console.log({oldPassword, newPassword})
 
     const passwordChangeHandler = async (e: any) => {
         e.preventDefault()
