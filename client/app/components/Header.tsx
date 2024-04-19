@@ -34,6 +34,8 @@ const Header: FC<Props> = ({ activeItem, setOpen, route, open, setRoute }) => {
     skip: !logout ? true : false
   })
 
+  console.log(data)
+
   useEffect(() => {
     if (!user) {
       if (data) {
@@ -45,9 +47,9 @@ const Header: FC<Props> = ({ activeItem, setOpen, route, open, setRoute }) => {
         toast.success("Login successfully")
       }
     }
-    if (data === null) {
-      setLogout(true)
-    }
+    // if (data === null) {
+    //   setLogout(true)
+    // }
   }, [data, user])
 
   if (typeof window !== "undefined") {

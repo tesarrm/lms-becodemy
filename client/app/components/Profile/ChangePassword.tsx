@@ -11,8 +11,6 @@ const ChangePassword = (props: Props) => {
     const [confirmPassword, setConfirmPassword] = useState("")
     const [updatePassword, { isSuccess, error }] = useUpdatePasswordMutation()
 
-    console.log({oldPassword, newPassword})
-
     const passwordChangeHandler = async (e: any) => {
         e.preventDefault()
         if (confirmPassword !== newPassword) {
