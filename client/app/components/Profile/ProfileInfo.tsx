@@ -65,7 +65,7 @@ const ProfileInfo: FC<Props> = ({ avatar, user }) => {
                         height={120}
                         src={user.avatar || avatar ? user.avatar.url || avatar : avatarIcon}
                         alt=""
-                        className="w-[120px] h-[120px] cursor-pointer border-[3px] border-[#37a39a] rounded-full"
+                        className="w-[120px] h-[120px] object-cover cursor-pointer border-[3px] border-[#37a39a] rounded-full"
                     />
                     <input
                         type="file"
