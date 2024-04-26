@@ -415,8 +415,17 @@ export const getAllUsers = CatchAsyncError(
 export const updateUserRole = CatchAsyncError(
     async (req: Request, res: Response, next: NextFunction) => {
         try {
-            const { id, role } = req.body
-            updatetUserRoleService(res, id, role)
+            const { email, role } = req.body
+            const isUserExits = await userModel.findOne({ email })
+            if (isUserExits) {
+                const id = isUserExits._id
+                updatetUserRoleService(res, id, role)
+            } else {
+                res.status(400).json({
+                    success: false,
+                    message: "User not found"
+                })
+            }
         } catch (error: any) {
             return next(new ErrorHandler(error.message, 400))
         }
@@ -442,6 +451,7 @@ export const deleteUser = CatchAsyncError(
             res.status(201).json({
                 success: true,
                 message: "User deleted successfully"
+                // message: `ini adalah ${id}`
             })
         } catch (error: any) {
             return next(new ErrorHandler(error.message, 400))
