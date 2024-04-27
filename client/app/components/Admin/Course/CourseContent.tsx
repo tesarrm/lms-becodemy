@@ -25,6 +25,7 @@ const CourseContent: FC<Props> = ({
   setCourseContentData,
   handleSubmit: handleCourseSubmit,
 }) => {
+
   const [isCollapsed, setIsCollapsed] = useState(
     Array(courseContentData.length).fill(false)
   );
@@ -156,7 +157,10 @@ const CourseContent: FC<Props> = ({
                         value={item.videoSection}
                         onChange={(e) => {
                           const updateData = [...courseContentData];
-                          updateData[index].videoSection = e.target.value;
+                          updateData[index] = {
+                            ...updateData[index],
+                            videoSection: e.target.value,
+                          };
                           setCourseContentData(updateData);
                         }}
                       />
@@ -217,7 +221,10 @@ const CourseContent: FC<Props> = ({
                         value={item.title}
                         onChange={(e) => {
                           const updatedData = [...courseContentData];
-                          updatedData[index].title = e.target.value;
+                          updatedData[index] = {
+                            ...updatedData[index],
+                            title: e.target.value,
+                          };
                           setCourseContentData(updatedData);
                         }}
                       />
@@ -231,7 +238,10 @@ const CourseContent: FC<Props> = ({
                         value={item.videoUrl}
                         onChange={(e) => {
                           const updatedData = [...courseContentData];
-                          updatedData[index].videoUrl = e.target.value;
+                          updatedData[index] = {
+                            ...updatedData[index],
+                            videoUrl: e.target.value,
+                          };
                           setCourseContentData(updatedData);
                         }}
                       />
@@ -246,7 +256,10 @@ const CourseContent: FC<Props> = ({
                         value={item.description}
                         onChange={(e) => {
                           const updatedData = [...courseContentData];
-                          updatedData[index].description = e.target.value;
+                          updatedData[index] = {
+                            ...updatedData[index],
+                            description: e.target.value,
+                          };
                           setCourseContentData(updatedData);
                         }}
                       />
@@ -278,8 +291,20 @@ const CourseContent: FC<Props> = ({
                           value={link.title}
                           onChange={(e) => {
                             const updatedData = [...courseContentData];
-                            updatedData[index].links[linkIndex].title =
-                              e.target.value;
+                            updatedData[index] = {
+                              ...updatedData[index],
+                              links: updatedData[index].links.map(
+                                (link: any, i: number) => {
+                                  if (i === linkIndex) {
+                                    return {
+                                      ...link,
+                                      title: e.target.value,
+                                    };
+                                  }
+                                  return link;
+                                }
+                              ),
+                            };
                             setCourseContentData(updatedData);
                           }}
                         />
@@ -290,8 +315,22 @@ const CourseContent: FC<Props> = ({
                           value={link.url}
                           onChange={(e) => {
                             const updatedData = [...courseContentData];
-                            updatedData[index].links[linkIndex].url =
-                              e.target.value;
+                            // updatedData[index].links[linkIndex].url =
+                            //   e.target.value;
+                            updatedData[index] = {
+                              ...updatedData[index],
+                              links: updatedData[index].links.map(
+                                (link: any, i: number) => {
+                                  if (i === linkIndex) {
+                                    return {
+                                      ...link,
+                                      url: e.target.value,
+                                    };
+                                  }
+                                  return link;
+                                }
+                              ),
+                            };
                             setCourseContentData(updatedData);
                           }}
                         />

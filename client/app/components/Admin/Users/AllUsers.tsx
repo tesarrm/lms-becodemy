@@ -32,6 +32,11 @@ const AllUsers: FC<Props> = ({ isTeam }) => {
   const [updateUserRole, { error: updateError, isSuccess }] =
     useUpdateUserRoleMutation();
 
+  const { isLoading, data, error, refetch } = useGetAllUsersQuery(
+    {},
+    { refetchOnMountOrArgChange: true }
+  );
+
   useEffect(() => {
     if (updateError) {
       if ("data" in updateError) {
@@ -40,10 +45,12 @@ const AllUsers: FC<Props> = ({ isTeam }) => {
       }
     }
     if (isSuccess) {
+      refetch();
       toast.success("User role updated successfully");
       setActive(false);
     }
     if (successDelete) {
+      refetch();
       toast.success("User role deleted successfully");
       setOpen(false);
     }
@@ -54,8 +61,6 @@ const AllUsers: FC<Props> = ({ isTeam }) => {
       }
     }
   }, [updateError, isSuccess, successDelete]);
-
-  const { isLoading, data, error } = useGetAllUsersQuery({});
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.3 },
@@ -218,7 +223,7 @@ const AllUsers: FC<Props> = ({ isTeam }) => {
           {active && (
             <Modal
               open={active}
-              onClose={() => setActive(!active)}
+              onClose={() => setOpen(!open)}
               aria-labeleby="modal-modal-title"
               aria-describedy="modal-modal-description"
             >
@@ -232,7 +237,12 @@ const AllUsers: FC<Props> = ({ isTeam }) => {
                     placeholder="Enter email"
                     className={`${styles.input}`}
                   />
-                  <select name="" id="" className={`${styles.input}`}>
+                  <select
+                    name=""
+                    id=""
+                    className={`${styles.input}`}
+                    onChange={(e) => setRole(e.target.value)}
+                  >
                     <option value="admin">Admin</option>
                     <option value="user">User</option>
                   </select>

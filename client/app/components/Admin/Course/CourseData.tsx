@@ -22,18 +22,21 @@ const CourseData: FC<Props> = ({
 }) => {
   const handleBenefitChange = (index: number, value: any) => {
     const updatedBenefits = [...benefits];
-    updatedBenefits[index].title = value;
+    updatedBenefits[index] = { ...updatedBenefits[index], title: value }; // Buat salinan objek dan ubah propertinya
     setBenefits(updatedBenefits);
-  };
-
-  const handleAddBenefits = () => {
-    setBenefits([...benefits, { title: "" }]);
   };
 
   const handlePrerequisiteChange = (index: number, value: any) => {
     const updatedPrerequisites = [...prerequisites];
-    updatedPrerequisites[index].title = value;
-    setBenefits(updatedPrerequisites);
+    updatedPrerequisites[index] = {
+      ...updatedPrerequisites[index],
+      title: value,
+    };
+    setPrerequisites(updatedPrerequisites);
+  };
+
+  const handleAddBenefits = () => {
+    setBenefits([...benefits, { title: "" }]);
   };
 
   const handleAddPrerequisites = () => {
@@ -61,7 +64,7 @@ const CourseData: FC<Props> = ({
           What are the benefits for starting this course
         </label>
         <br />
-        {benefits.map((benefits: any, index: number) => (
+        {benefits.map((benefit: any, index: number) => (
           <input
             type="text"
             key={index}
@@ -69,7 +72,7 @@ const CourseData: FC<Props> = ({
             placeholder="You will be able to build a full stack LMS Platform"
             required
             className={`${styles.input} my-2`}
-            value={benefits.title}
+            value={benefit.title}
             onChange={(e) => handleBenefitChange(index, e.target.value)}
           />
         ))}
@@ -84,7 +87,7 @@ const CourseData: FC<Props> = ({
           What are the prerequisites for starting this course
         </label>
         <br />
-        {prerequisites.map((prerequisites: any, index: number) => (
+        {prerequisites.map((prerequisite: any, index: number) => (
           <input
             type="text"
             key={index}
@@ -92,7 +95,7 @@ const CourseData: FC<Props> = ({
             placeholder="You need basic knowledge of MERN stack"
             required
             className={`${styles.input} my-2`}
-            value={prerequisites.title}
+            value={prerequisite.title}
             onChange={(e) => handlePrerequisiteChange(index, e.target.value)}
           />
         ))}

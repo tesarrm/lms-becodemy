@@ -19,7 +19,7 @@ const CreateCourse = (props: Props) => {
     if (isSuccess) {
       toast.success("Course success successfully");
 
-      redirect("/admin/all-courses");
+      redirect("/admin/courses");
     }
     if (error) {
       if ("data" in error) {
@@ -96,7 +96,7 @@ const CreateCourse = (props: Props) => {
       totalVideos: courseContentData.length,
       benefits: formattedBenefits,
       prerequisites: formattedPrerequisites,
-      courseContent: formattedCourseContentData,
+      courseData: formattedCourseContentData,
     };
     setCourseData(data);
   };
@@ -109,6 +109,9 @@ const CreateCourse = (props: Props) => {
       await createCourse(data);
     }
   };
+
+  // console.log(benefits)
+  // console.log(prerequisites)
 
   return (
     <div className="w-full flex min-h-screen">
