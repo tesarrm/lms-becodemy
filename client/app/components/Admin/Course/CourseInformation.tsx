@@ -1,5 +1,7 @@
 import { styles } from "@/app/styles/styles";
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
+import EditCategories from "../Customization/EditCategories";
+import { useGetHeroDataQuery } from "@/redux/features/layout/layoutApi";
 
 type Props = {
   courseInfo: any;
@@ -14,7 +16,15 @@ const CourseInformation: FC<Props> = ({
   active,
   setActive,
 }) => {
+  const { data } = useGetHeroDataQuery("Categories", {});
   const [dragging, setDragging] = useState(false);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    if (data) {
+      setCategories(data.layout.categories);
+    }
+  }, [data]);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -140,22 +150,51 @@ const CourseInformation: FC<Props> = ({
           </div>
         </div>
         <br />
-        <div>
-          <label htmlFor="" className={`${styles.label}`}>
-            Course Tags
-          </label>
-          <input
-            type="text"
-            name=""
-            required
-            value={courseInfo.tags}
-            onChange={(e: any) => {
-              setCourseInfo({ ...courseInfo, tags: e.target.value });
-            }}
-            id="tags"
-            placeholder="MERN, Next 13, Socket io, Tailwind css, LMS"
-            className={`${styles.input}`}
-          />
+        <div className="w-full flex justify-between">
+          <div className="w-[48%]">
+            <label htmlFor="" className={`${styles.label}`}>
+              Course Tags
+            </label>
+            <input
+              type="text"
+              name=""
+              required
+              value={courseInfo.tags}
+              onChange={(e: any) => {
+                setCourseInfo({ ...courseInfo, tags: e.target.value });
+              }}
+              id="tags"
+              placeholder="MERN, Next 13, Socket io, Tailwind css, LMS"
+              className={`${styles.input}`}
+            />
+          </div>
+          <div className="w-[48%]">
+            <label htmlFor="" className={`${styles.label}`}>
+              Course Categories
+            </label>
+            <select
+              name=""
+              id=""
+              className={`${styles.input}`}
+              value={courseInfo.category}
+              onChange={(e: any) => {
+                setCourseInfo({ ...courseInfo, category: e.target.value });
+              }}
+            >
+              <option value="" className="dark:bg-[#111C43]">
+                Select Category
+              </option>
+              {categories.map((item: any) => (
+                <option
+                  value={item._id}
+                  key={item._id}
+                  className="dark:bg-[#111C43]"
+                >
+                  {item.title}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         <br />
         <div className="w-full flex justify-between">

@@ -33,6 +33,7 @@ const CreateCourse = (props: Props) => {
   const [courseInfo, setCourseInfo] = useState({
     name: "",
     description: "",
+    categories: "",
     price: "",
     estimatedPrice: "",
     tags: "",
@@ -48,6 +49,7 @@ const CreateCourse = (props: Props) => {
       title: "",
       description: "",
       videoSection: "Untitled Section",
+      videoLength: "",
       links: [
         {
           title: "",
@@ -74,6 +76,7 @@ const CreateCourse = (props: Props) => {
         videoUrl: courseContent.videoUrl,
         title: courseContent.title,
         description: courseContent.description,
+        videoLength: courseContent.videoLength,
         videoSection: courseContent.videoSection,
         links: courseContent.links.map((link) => ({
           title: link.title,
@@ -105,13 +108,10 @@ const CreateCourse = (props: Props) => {
     const data = courseData;
 
     if (!isLoading) {
-      console.log(data);
       await createCourse(data);
     }
   };
-
-  // console.log(benefits)
-  // console.log(prerequisites)
+  console.log(courseData);
 
   return (
     <div className="w-full flex min-h-screen">

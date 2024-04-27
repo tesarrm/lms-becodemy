@@ -234,7 +234,7 @@ const AdminSidebar = () => {
             />
             <Item
               title="FAQ"
-              to="/faq"
+              to="/admin/faq"
               icon={<QuizIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -256,7 +256,7 @@ const AdminSidebar = () => {
             <Item
               title="Manage Team"
               to="/admin/team"
-              icon={<PeopleOutlinedIcon/>}
+              icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
