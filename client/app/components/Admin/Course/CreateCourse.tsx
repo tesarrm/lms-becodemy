@@ -96,6 +96,7 @@ const CreateCourse = (props: Props) => {
       thumbnail: courseInfo.thumbnail,
       level: courseInfo.level,
       demoUrl: courseInfo.demoUrl,
+      categories: courseInfo.categories,
       totalVideos: courseContentData.length,
       benefits: formattedBenefits,
       prerequisites: formattedPrerequisites,
