@@ -11,42 +11,42 @@ export const reviews = [
     avatar: "https://randomuser.me/api/portraits/men/1.jpg",
     profession: "Student | Cambrige university",
     comment:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem",
+      "LoreAlias co laum fuga voluptatum labore cupiditate odit sit sint, perferendis impedit asperiores nihil, ut dicta distinctio amet expedita. Repellendus debitis ea quam quis nobis quos? Velit, enim!",
   },
   {
     name: "Geene Bates",
     avatar: "https://randomuser.me/api/portraits/men/1.jpg",
     profession: "Student | Cambrige university",
     comment:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos cum repellat unde sed, error doloribus. Alias consequuntur nam vitae aliquam, eos recusandae rem laudantium quisquam fuga voluptatum labore cupiditate odit sit sint, perferendis impedit asperiores nihil, ut dicta distinctio amet expedita. Repellendus debitis ea quam quis nobis quos? Velit, enim!",
   },
   {
     name: "Geene Bates",
     avatar: "https://randomuser.me/api/portraits/men/1.jpg",
     profession: "Student | Cambrige university",
     comment:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem",
+      "Loremm ipsum dolor sit aamet consectetur adipisicing em ipsum dolor sit amet consectetur adipisicing e ipsum dolor sit amet consectetur adipisicing elit. Dignissimos cum repellat unde sed, error doloribus. Alias consequuntur nam vitae aliquam, eos recusandae rem laudantium quisquam fuga voluptatum labore cupiditate odit sit sint, perferendis impedit asperiores nihil, ut dicta distinctio amet expedita. Repellendus debitis ea quam quis nobiamet consectetur adipisicing em ipsum dolor sit amet consectetur adipisicing e ipsum dolor sit amet consectetur adipisicing elit. Dignissimos cum repellat unde sed, error doloribus. Alias consequuntur nam vitae aliquam, eos recusandae rem laudantium quisquam fuga voluptatum labore cupiditate odit sit sint, perferendis impedit asperiores nihil, ut dicta distinctio amet expedita. Repellendus debitis ea quam quis nobimet consectetur adipisicing em ipsum dolor sit amet consectetur adipisicing e ipsum dolor sit amet consectetur adipisicing elit. Dignissimos cum repellat unde sed, error doloribus. Alias consequuntur nam vitae aliquam, eos recusandae rem laudantium quisquam fuga voluptatum labore cupiditate odit sit sint, perferendis impedit asperiores nihil, ut dicta distinctio amet expedita. Repellendus debitis ea quam quis nobis quos? Velit, enim!",
   },
   {
     name: "Geene Bates",
     avatar: "https://randomuser.me/api/portraits/men/1.jpg",
     profession: "Student | Cambrige university",
     comment:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem",
+      "Lorem  ipsum dolor sit amet consectetur adipisicing elit. Dignissimos cum repellat unde sed, error doloribus. Alias consequuntur nam vitae aliquam, eos recusandae rem laudantium quisquam fuga voluptatum labore cupiditate odit sit sint, perferendis impedit asperiores nihil, ut dicta distinctio amet expedita. Repellendus debitis ea quam quis nobis quos? Veipsum dolor sit amet consectetur adipisicing elit. Dignissimos cum repellat unde sed, error doloribus. Alias consequuntur nam vitae aliquam, eos recusandae rem laudantium quisquam fuga voluptatum labore cupiditate odit sit sint, perferendis impedit asperiores nihil, ut dicta distinctio amet expedita. Repellendus debitis ea quam quis nobis quos? Velit, enim!",
   },
   {
     name: "Geene Bates",
     avatar: "https://randomuser.me/api/portraits/men/1.jpg",
     profession: "Student | Cambrige university",
     comment:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos cum repellat unde sed, error doloribus. Alias consequuntur nam vitae aliquam, eos recusandae rem laudantium quisquam fuga voluptatum labore cupiditate odit sit sint, perferendis impedit asperiores nihil, ut dicta distinctio amet expedita. Repellendus debitis ea quam quis nobis quos? Velit, enim!",
   },
   {
     name: "Geene Bates",
     avatar: "https://randomuser.me/api/portraits/men/1.jpg",
     profession: "Student | Cambrige university",
     comment:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos cum repellat unde sed, error doloribus. Alias consequuntur nam vitae aliquam, eos recusandae rem laudantium quisquam fuga voluptatum labore cupiditate odit sit sint, perferendis impedit asperiores nihil, ut dicta distinctio amet expedita. Repellendus debitis ea quam quis nobis quos? Velit, enim!",
   },
 ];
 
@@ -75,10 +75,10 @@ const Reviews = (props: Props) => {
             placeat alias atque voluptas.
           </p>
         </div>
-        <br />
-        <br />
       </div>
-      <div className="grid grid-cols-1 gap-[25px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-2 lg:gap-[25px] xl:grid-cols-2 xl:gap-[35px] mb-12 border-0 md:[&>*nth-child(3)]:!mt-[-60px] md:[&>*:nth-child(6)]:mt-[-40px]">
+      <br />
+      <br />
+      <div className="grid grid-cols-1 gap-[25px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-2 lg:gap-[25px] xl:grid-cols-2 xl:gap-[35px] mb-12 border-0 md:[&>*:nth-child(3)]:!mt-[-60px] md:[&>*:nth-child(6)]:mt-[-40px]">
         {reviews &&
           reviews.map((i, index) => <ReviewsCard item={i} key={index} />)}
       </div>
