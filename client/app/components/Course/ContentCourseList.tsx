@@ -44,7 +44,6 @@ const ContentCourseList = (props: Props) => {
         const sectionVideos: any[] = props.data.filter(
           (item: any) => item.videoSection === section
         );
-        console.log(sectionVideos);
 
         const sectionVideoCount: number = sectionVideos.length;
 

@@ -3,16 +3,26 @@ import CoursePlayer from "@/app/utils/CoursePlayer";
 import Ratings from "@/app/utils/Ratings";
 import Link from "next/link";
 import { format } from "path";
-import React from "react";
-import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import React, { useState } from "react";
+import {
+  IoMdCheckmarkCircleOutline,
+  IoMdCloseCircleOutline,
+} from "react-icons/io";
 import { useSelector } from "react-redux";
 import ContentCourseList from "./ContentCourseList";
+import { Elements } from "@stripe/react-stripe-js";
+import CheckOutForm from "../Payment/CheckOutForm";
 
 type Props = {
   data: any;
+  clientSecret: string;
+  stripePromise: any;
 };
 
-const CourseDetails = ({ data }: Props) => {
+const CourseDetails = ({ data, clientSecret, stripePromise }: Props) => {
+  console.log(stripePromise);
+
+  const [open, setOpen] = useState(false);
   const { user } = useSelector((state: any) => state.auth);
   const discountprecentange =
     ((data?.setimatedPrice - data?.price) / data?.estimatedPrice) * 100;
@@ -23,7 +33,7 @@ const CourseDetails = ({ data }: Props) => {
     user && user?.courses?.find((item: any) => item._id === data._id);
 
   const handleOrder = (e: any) => {
-    console.log("gggg");
+    setOpen(true);
   };
 
   return (
@@ -203,6 +213,28 @@ const CourseDetails = ({ data }: Props) => {
           </div>
         </div>
       </div>
+      <>
+        {open && (
+          <div className="w-full h-screen bg-[#00000036] fixed top-0 left-0 z-50 flex items-center justify-center">
+            <div className="w-[500px] min-h-[420px] bg-white rounded-xl shadow p-3">
+              <div className="w-full flex justify-end">
+                <IoMdCloseCircleOutline
+                  size={40}
+                  className="text-black cursor-pointer"
+                  onClick={() => setOpen(false)}
+                />
+              </div>
+              <div className="w-full">
+                {stripePromise && clientSecret && (
+                  <Elements stripe={stripePromise} options={{ clientSecret }}>
+                    <CheckOutForm setOpen={setOpen} data={data} />
+                  </Elements>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+      </>
     </div>
   );
 };
