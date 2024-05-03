@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import ContentCourseList from "./ContentCourseList";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckOutForm from "../Payment/CheckOutForm";
+import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
 
 type Props = {
   data: any;
@@ -20,10 +21,10 @@ type Props = {
 };
 
 const CourseDetails = ({ data, clientSecret, stripePromise }: Props) => {
-  console.log(stripePromise);
-
   const [open, setOpen] = useState(false);
-  const { user } = useSelector((state: any) => state.auth);
+  // const { user } = useSelector((state: any) => state.auth);
+  const { data: userData } = useLoadUserQuery(undefined, {});
+  const user = userData?.user;
   const discountprecentange =
     ((data?.setimatedPrice - data?.price) / data?.estimatedPrice) * 100;
 

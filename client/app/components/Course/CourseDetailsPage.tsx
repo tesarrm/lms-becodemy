@@ -26,8 +26,6 @@ const CourseDetailsPage = ({ id }: Props) => {
   const [stripePropmise, setStripePromise] = useState<any>(null);
   const [clientSecret, setClientSecret] = useState("");
 
-  console.log(config);
-
   useEffect(() => {
     if (config) {
       const publishableKey = config?.publishableKey;
