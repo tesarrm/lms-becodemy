@@ -25,7 +25,6 @@ const AllInvoices = ({ isDashboard }: Props) => {
   const { data: coursesData } = useGetAllCoursesQuery({});
 
   const [orderData, setOrderData] = useState<any>([]);
-  console.log(usersData);
 
   useEffect(() => {
     if (data) {
@@ -68,7 +67,7 @@ const AllInvoices = ({ isDashboard }: Props) => {
               return (
                 <a href={`mailto:${params.row.userEmail}`}>
                   <AiOutlineMail
-                    className="dark:text-white text-black"
+                    className="dark:text-white mt-4 text-black"
                     size={20}
                   />
                 </a>
@@ -78,104 +77,7 @@ const AllInvoices = ({ isDashboard }: Props) => {
         ]),
   ];
 
-  const rows: any = [
-    {
-      id: "12313132",
-      userName: "Nama Saya",
-      userEmail: "email@gmail.com",
-      title: "Title Read js Cour",
-      price: "$2343",
-      created_at: "2 days ago",
-    },
-    {
-      id: "12313132",
-      userName: "Nama Saya",
-      userEmail: "email@gmail.com",
-      title: "Title Read js Cour",
-      price: "$2343",
-      created_at: "2 days ago",
-    },
-    {
-      id: "12313132",
-      userName: "Nama Saya",
-      userEmail: "email@gmail.com",
-      title: "Title Read js Cour",
-      price: "$2343",
-      created_at: "2 days ago",
-    },
-    {
-      id: "12313132",
-      userName: "Nama Saya",
-      userEmail: "email@gmail.com",
-      title: "Title Read js Cour",
-      price: "$2343",
-      created_at: "2 days ago",
-    },
-    {
-      id: "12313132",
-      userName: "Nama Saya",
-      userEmail: "email@gmail.com",
-      title: "Title Read js Cour",
-      price: "$2343",
-      created_at: "2 days ago",
-    },
-    {
-      id: "12313132",
-      userName: "Nama Saya",
-      userEmail: "email@gmail.com",
-      title: "Title Read js Cour",
-      price: "$2343",
-      created_at: "2 days ago",
-    },
-    {
-      id: "12313132",
-      userName: "Nama Saya",
-      userEmail: "email@gmail.com",
-      title: "Title Read js Cour",
-      price: "$2343",
-      created_at: "2 days ago",
-    },
-    {
-      id: "12313132",
-      userName: "Nama Saya",
-      userEmail: "email@gmail.com",
-      title: "Title Read js Cour",
-      price: "$2343",
-      created_at: "2 days ago",
-    },
-    {
-      id: "12313132",
-      userName: "Nama Saya",
-      userEmail: "email@gmail.com",
-      title: "Title Read js Cour",
-      price: "$2343",
-      created_at: "2 days ago",
-    },
-    {
-      id: "12313132",
-      userName: "Nama Saya",
-      userEmail: "email@gmail.com",
-      title: "Title Read js Cour",
-      price: "$2343",
-      created_at: "2 days ago",
-    },
-    {
-      id: "12313132",
-      userName: "Nama Saya",
-      userEmail: "email@gmail.com",
-      title: "Title Read js Cour",
-      price: "$2343",
-      created_at: "2 days ago",
-    },
-    {
-      id: "12313132",
-      userName: "Nama Saya",
-      userEmail: "email@gmail.com",
-      title: "Title Read js Cour",
-      price: "$2343",
-      created_at: "2 days ago",
-    },
-  ];
+  const rows: any = [];
 
   orderData &&
     orderData.forEach((item: any) => {

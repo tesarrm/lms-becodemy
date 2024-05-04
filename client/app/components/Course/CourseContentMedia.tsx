@@ -53,6 +53,7 @@ const CourseContentMedia = ({
   const [isReviewReply, setIsReviewReply] = useState(false);
   const [reply, setReply] = useState("");
   const [reviewId, setReviewId] = useState("");
+  const [replyActive, setReplyActive] = useState(false);
   const [
     addnewQuestion,
     { isSuccess, error, isLoading: questionCreationLoading },
@@ -117,7 +118,7 @@ const CourseContentMedia = ({
       });
     }
     if (answerSuccess) {
-      setQuestion("");
+      setAnswer("");
       refetch();
       toast.success("Answer added successfully");
       if (user.role !== "admin") {
@@ -335,8 +336,11 @@ const CourseContentMedia = ({
               handleAnswerSubmit={handleAnswerSubmit}
               user={user}
               setAnswerId={setAnswerId}
+              questionId={questionId}
               setQuestionId={setQuestionId}
               answerCreationLoading={answerCreationLoading}
+              replyActive={replyActive}
+              setReplyActive={setReplyActive}
             />
           </div>
         </>
@@ -433,17 +437,19 @@ const CourseContentMedia = ({
                       </small>
                     </div>
                   </div>
-                  {user.role === "admin" && (
-                    <span
-                      className={`${styles.label} !ml-10 cursor-pointer`}
-                      onClick={() => {
-                        setIsReviewReply(!isReviewReply), setReviewId(item._id);
-                      }}
-                    >
-                      Add Reply
-                    </span>
-                  )}
-                  {isReviewReply && (
+                  {user.role === "admin" &&
+                    item.commentReplies.length === 0 && (
+                      <span
+                        className={`${styles.label} !ml-10 cursor-pointer`}
+                        onClick={() => {
+                          setIsReviewReply(!isReviewReply),
+                            setReviewId(item._id);
+                        }}
+                      >
+                        Add Reply
+                      </span>
+                    )}
+                  {isReviewReply && reviewId === item._id && (
                     <div className="w-full flex relative">
                       <input
                         type="text"
@@ -508,6 +514,8 @@ const CommentReply = ({
   questionId,
   answerCreationLoading,
   setQuestionId,
+  replyActive,
+  setReplyActive,
 }: any) => {
   return (
     <div className="w-full my-3">
@@ -524,6 +532,8 @@ const CommentReply = ({
           setQuestionId={setQuestionId}
           answerCreationLoading={answerCreationLoading}
           handleAnswerSubmit={handleAnswerSubmit}
+          replyActive={replyActive}
+          setReplyActive={setReplyActive}
         />
       ))}
     </div>
@@ -536,11 +546,13 @@ const CommentItem = ({
   item,
   answer,
   setAnswer,
+  questionId,
   setQuestionId,
   answerCreationLoading,
   handleAnswerSubmit,
+  replyActive,
+  setReplyActive,
 }: any) => {
-  const [replyActive, setReplyActive] = useState(false);
   return (
     <div className="my-4">
       <div className="flex mb-2">
@@ -580,7 +592,7 @@ const CommentItem = ({
           {item.questionReplies.length}
         </span>
       </div>
-      {replyActive && (
+      {replyActive && questionId === item._id && (
         <>
           {item.questionReplies.map((item: any) => (
             <div className="w-full flex 800px:ml-16 my-5 text-black dark:text-white">
