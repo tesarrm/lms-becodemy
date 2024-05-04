@@ -2,6 +2,7 @@ import { styles } from "@/app/styles/styles";
 import React, { FC } from "react";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import toast from "react-hot-toast";
+import { MdAddCircleOutline } from "react-icons/md";
 
 type Props = {
   benefits: { title: string }[];
@@ -76,8 +77,8 @@ const CourseData: FC<Props> = ({
             onChange={(e) => handleBenefitChange(index, e.target.value)}
           />
         ))}
-        <AddCircleIcon
-          styles={{ margin: "10px 0px", cursor: "pointer", width: "30px" }}
+        <MdAddCircleOutline
+          style={{ margin: "10px 0px", cursor: "pointer", width: "30px" }}
           onClick={handleAddBenefits}
         />
       </div>
@@ -99,8 +100,8 @@ const CourseData: FC<Props> = ({
             onChange={(e) => handlePrerequisiteChange(index, e.target.value)}
           />
         ))}
-        <AddCircleIcon
-          styles={{ margin: "10px 0px", cursor: "pointer", width: "30px" }}
+        <MdAddCircleOutline
+          style={{ margin: "10px 0px", cursor: "pointer", width: "30px" }}
           onClick={handleAddPrerequisites}
         />
       </div>

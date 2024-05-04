@@ -7,7 +7,7 @@ import FAQ from "../components/FAQ/FAQ";
 
 type Props = {};
 
-const page = (props: Props) => {
+const Page = (props: Props) => {
   const [open, setOpen] = useState(false);
   const [activeItem, setActiveItem] = useState(4);
   const [route, setRoute] = useState("Login");
@@ -34,4 +34,4 @@ const page = (props: Props) => {
   );
 };
 
-export default page;
+export default Page;

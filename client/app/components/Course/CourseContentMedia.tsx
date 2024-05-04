@@ -277,7 +277,7 @@ const CourseContentMedia = ({
       {activeBar === 1 && (
         <div>
           {data[activeVideo]?.links.map((item: any, index: number) => (
-            <div className="mb-5">
+            <div key={index} className="mb-5">
               <h2 className="800px:text-[20px] 800px:inline-block dark:text-white text-black">
                 {item.title && item.title + " :"}
               </h2>
@@ -415,7 +415,10 @@ const CourseContentMedia = ({
           <div className="w-full">
             {(course?.reviews && [...course.reviews].reverse())?.map(
               (item: any, index: number) => (
-                <div className="w-full my-5 dark:text-white text-black">
+                <div
+                  key={index}
+                  className="w-full my-5 dark:text-white text-black"
+                >
                   <div className="w-full flex">
                     <div>
                       <Image
@@ -468,7 +471,7 @@ const CourseContentMedia = ({
                     </div>
                   )}
                   {item.commentReplies.map((i: any, index: number) => (
-                    <div className="w-full flex 800px:ml-16 my-5">
+                    <div key={index} className="w-full flex 800px:ml-16 my-5">
                       <div className="w-[50px] h-[50px]">
                         <Image
                           src={i.user.avatar ? i.user.avatar.url : defaultImage}
@@ -595,7 +598,10 @@ const CommentItem = ({
       {replyActive && questionId === item._id && (
         <>
           {item.questionReplies.map((item: any) => (
-            <div className="w-full flex 800px:ml-16 my-5 text-black dark:text-white">
+            <div
+              key={item._id}
+              className="w-full flex 800px:ml-16 my-5 text-black dark:text-white"
+            >
               <div>
                 <Image
                   src={item.user.avatar ? item.user.avatar.url : defaultImage}

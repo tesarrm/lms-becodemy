@@ -76,7 +76,10 @@ const DashboardHeader: FC<Props> = ({ open, setOpen }) => {
 
           {notification &&
             notification.map((item: any, index: number) => (
-              <div className="dark:bg-[#2d3a4ea1] bg-[@00000013] font-Poppins border-b dark:border-b-[#ffffff47] border-b-[#0000000f]">
+              <div
+                className="dark:bg-[#2d3a4ea1] bg-[@00000013] font-Poppins border-b dark:border-b-[#ffffff47] border-b-[#0000000f]"
+                key={index}
+              >
                 <div className="w-full flex times-center justify-between p-2">
                   <p className="text-black dark:text-white">{item.title}</p>
                   <p

@@ -155,7 +155,7 @@ const AllInvoices = ({ isDashboard }: Props) => {
               checkboxSelection={isDashboard ? false : true}
               rows={rows}
               columns={columns}
-              components={isDashboard ? {} : { Toolbar: GridToolbar }}
+              // components={isDashboard ? {} : { Toolbar: GridToolbar }}
             />
           </Box>
         </Box>

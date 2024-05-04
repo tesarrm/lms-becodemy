@@ -31,7 +31,7 @@ const Profile: FC<Props> = ({ user }) => {
     await signOut();
   };
 
-  if (typeof window !== "undefidend") {
+  if (typeof window !== "undefined") {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 85) {
         setScroll(true);
@@ -87,7 +87,7 @@ const Profile: FC<Props> = ({ user }) => {
           </div>
           {courses?.length === 0 && (
             <h1 className="text-center text-[18px] font-Poppins">
-              You don't have any purchased courses!
+              You dont have any purchased courses!
             </h1>
           )}
         </div>
