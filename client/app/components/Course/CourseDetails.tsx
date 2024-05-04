@@ -3,7 +3,7 @@ import CoursePlayer from "@/app/utils/CoursePlayer";
 import Ratings from "@/app/utils/Ratings";
 import Link from "next/link";
 import { format } from "timeago.js";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   IoMdCheckmarkCircleOutline,
   IoMdCloseCircleOutline,
@@ -21,13 +21,26 @@ type Props = {
   data: any;
   clientSecret: string;
   stripePromise: any;
+  setRoute: any;
+  setOpen: any;
 };
 
-const CourseDetails = ({ data, clientSecret, stripePromise }: Props) => {
+const CourseDetails = ({
+  data,
+  clientSecret,
+  stripePromise,
+  setRoute,
+  setOpen: openAuthModal,
+}: Props) => {
   const [open, setOpen] = useState(false);
   // const { user } = useSelector((state: any) => state.auth);
   const { data: userData } = useLoadUserQuery(undefined, {});
-  const user = userData?.user;
+  const [user, setUser] = useState<any>();
+
+  useEffect(() => {
+    setUser(userData?.user);
+  }, [userData]);
+
   const discountprecentange =
     ((data?.setimatedPrice - data?.price) / data?.estimatedPrice) * 100;
 
@@ -37,7 +50,12 @@ const CourseDetails = ({ data, clientSecret, stripePromise }: Props) => {
     user && user?.courses?.find((item: any) => item._id === data._id);
 
   const handleOrder = (e: any) => {
-    setOpen(true);
+    if (user) {
+      setOpen(true);
+    } else {
+      setRoute("Login");
+      openAuthModal(true);
+    }
   };
 
   return (

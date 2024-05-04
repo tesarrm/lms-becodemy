@@ -26,7 +26,6 @@ const CourseDetailsPage = ({ id }: Props) => {
   const [stripePropmise, setStripePromise] = useState<any>(null);
   const [clientSecret, setClientSecret] = useState("");
 
-
   useEffect(() => {
     if (config) {
       const publishableKey = config?.publishableKey;
@@ -68,6 +67,8 @@ const CourseDetailsPage = ({ id }: Props) => {
               data={data?.course}
               stripePromise={stripePropmise}
               clientSecret={clientSecret}
+              setOpen={setOpen}
+              setRoute={setRoute}
             />
           )}
           <Footer />
